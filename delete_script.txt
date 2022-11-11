@@ -1,0 +1,7 @@
+insert into archived_orders select * from orders where id = 2032;
+delete from order_bom where orderId = 2107;
+delete from order_fab_bom where orderId = 2107;
+delete from rohloff_serial where orderId = 2107;
+delete from shipping where order_id = 2107;
+delete from shipping_address where order_id = 2107;
+delete from orders where id = 2107;

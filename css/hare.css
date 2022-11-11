@@ -1,0 +1,270 @@
+body, html{
+	background-color:#F4EBD9;
+}
+
+.navbar-default, .navbar{
+	background-color:#F4EBD9;
+}
+
+select, form{
+	padding:0px;
+	margin:0px;
+}
+
+.mast{
+	height:50px;
+	background-color:#F4EBD9;
+	background-position:20px 12px;
+	background-repeat: no-repeat;
+}
+
+.row{
+	padding-top:5px;
+	padding-bottom:5px;
+}
+
+.table-controls{
+	border:1px solid #ccc;
+	background-color:#e6e6e6;
+	padding-left:10px;
+}
+
+td.isLate{
+	color:#ff9999;
+}
+
+div.view-panel{
+	border:1px solid #000;
+	margin:3px;
+}
+
+#dropBox{
+    border: 1px dashed #c0c0c0;
+    border-radius: 5px;
+    background: #F3F4F5;
+	padding:5px;
+    cursor: pointer;
+	margin-bottom:10px;
+}
+
+dd, dt{
+	margin-bottom:5px;
+}
+
+dd.bigger{
+	font-size:150%;
+}
+
+/*card colours*/
+
+.modelcard{
+	background-color:#cdf2c6;
+}	
+
+.panel-body .card-footer{
+	height:4px;
+}
+
+
+.card-footer.custom{
+	background-color:#B7AD99;
+}
+
+.card-footer.bahookie{
+	background-color:#FF4365;
+}
+
+.card-footer.stoater{
+	background-color:#030301;
+}
+
+.card-footer.stoaterPD{
+	background-color:#00D9C0;
+}
+
+.card-footer.stooshie{
+	background-color:#FFA3E4;
+}
+
+/*sortable*/
+
+.modelcard .panel-heading, .modelcard .panel-body {
+	padding:5px;
+}
+
+.modelcard .panel-heading h3{
+	font-size:14px;
+}
+
+.modelcard .panel-body{
+	font-size:12px;
+}
+
+#sortable_cards .buttonContainer{
+	margin-left:-15px;
+}
+
+#sortable_cards .buttonContainer button{
+	margin-right:15px;
+}
+
+
+hr.weekDivider{
+border-width: 10px;
+border-color:#a8a5a3;
+}
+
+.locked .modelcard{
+	border:1px solid red;
+	}
+	
+dl.fabview{
+	padding:10px;
+	border:2px solid #000;
+	font-size:150%;
+}	
+
+
+.qc table td {
+  border:2px solid #000;
+  padding: 10px;
+  margin:10px;	
+}
+
+.qc table {
+	width:50%;
+}
+
+
+.qc table td:last-child {
+	width:100px;
+}
+
+.qc table td{
+	width:200px;
+}
+
+span.frame-number{
+	display:block;
+	width:250px;
+	min-height:60px;
+	border:2px solid #000;
+	padding-left:5px;
+	font-size:32px;
+}
+
+div.alignment-table{
+	width:50%;
+	min-height:150px;
+	border:2px solid #000;
+}
+
+#logout{
+	display:inline;
+}  
+
+div.chart{
+	border-bottom:1px solid #000;
+	margin-bottom:30px;
+	padding-bottom:20px;
+}
+
+@media print {
+  
+  .qc { 
+    page-break-before: always;
+  }	
+
+  .commercialinvoice table tr:first-child {
+  	background-color:#c0c0c0;
+  }
+  	
+}
+
+.commercialinvoice table tr:first-child {
+	background-color:#c0c0c0;
+	font-size:150%;
+	border-bottom:2px solid red;
+}
+
+.commercialinvoice table td{
+	padding:5px;
+	border:1px solid #000;
+}
+
+.commercialinvoice table th{
+	padding:10px;
+	border:2px solid #000;
+}
+
+.commercialinvoice table{
+	width:100%;
+	border-collapse: initial;
+	border-padding:10px;
+	border:1px solid #000;
+}   
+
+@media print {
+	.panel{
+	}	
+
+	.card{
+		display:inline-block;
+		width:500px;
+		float: right;
+		padding:5px;
+		padding-left:15px;
+	}
+	
+	.card h1{
+		text-transform: uppercase;
+		font-size:48px;
+	}
+	
+  a[href]:after {
+    content: none !important;
+  }
+}   
+
+#interactive.viewport {
+    position: relative;
+}
+
+#interactive.viewport > canvas, #interactive.viewport > video {
+    max-width: 100%;
+    width: 100%;
+}
+
+canvas.drawing, canvas.drawingBuffer {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.missingBomContainer{
+	background-color:#ccd1d1;
+}
+
+.missingBomContainer table{
+	width:50%;
+}	
+
+.snapshot tbody tr td input{
+	font-size:smaller;
+}
+
+.snapshot tbody tr tdinput[type=number]::-webkit-inner-spin-button,
+.snapshot tbody tr tdinput[type=number]::-webkit-outer-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}
+
+.manualEntry{
+	background-image: linear-gradient(orange, #ff8c00);
+}
+
+.snapshot-locked .manualEntry{
+	background-image: none;
+	background-color: none;
+}
+	
