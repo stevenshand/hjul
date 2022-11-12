@@ -4,7 +4,10 @@ include_once ( __DIR__.'/../configuration.php' );
 include_once ( __DIR__.'/../functions/harefn.php' );
 
 $orderId = $_GET["orderId"];
-$templateId = $_GET["templateId"];
+$templateId = 0;
+if( isset( $_GET["templateId"] ) ){
+    $templateId = $_GET["templateId"];
+} ;
 // $model = fetchModelId($orderId);
 
 

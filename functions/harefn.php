@@ -112,32 +112,32 @@ function fetchCustomerMonths(){
 	return $orderDates;		
 }
 
-function countWeeklyEnquiries($startDate){
+//function countWeeklyEnquiries($startDate){
+//
+//	$start = date_create_immutable_from_format( 'd-m-Y', $startDate );//DateTime
+//	$end = $start->add(new DateInterval('P7D'));
+//
+//	// /&property=addedAt&property=properties
+//	$uri="https://api.hubapi.com/contacts/v1/lists/all/contacts/recent?count=100&hapikey=".HUBSPOT_API_KEY;
+//	$response = \Httpful\Request::get($uri)->send();
+//
+//	$entries = $response->body->contacts;
+//
+//	$count = 0;
+//	foreach( $entries as $entry ){
+//
+//		$addedDate = ceil(($entry->addedAt)/1000);
+//
+//		if (($addedDate > $start->getTimestamp()) && ($addedDate < $end->getTimestamp())){
+//			$count++;
+//		}
+//	}
+//
+//	return $count;
+//}
 
-	$start = date_create_immutable_from_format( 'd-m-Y', $startDate );//DateTime
-	$end = $start->add(new DateInterval('P7D'));
-		
-	// /&property=addedAt&property=properties
-	$uri="https://api.hubapi.com/contacts/v1/lists/all/contacts/recent?count=100&hapikey=".HUBSPOT_API_KEY;
-	$response = \Httpful\Request::get($uri)->send();
-	
-	$entries = $response->body->contacts;
-		
-	$count = 0;
-	foreach( $entries as $entry ){
-		
-		$addedDate = ceil(($entry->addedAt)/1000);
-		
-		if (($addedDate > $start->getTimestamp()) && ($addedDate < $end->getTimestamp())){
-			$count++;
-		}
-	}	
-			
-	return $count;
-}
-
-function linkCRMContact($emailAddress, $fname, $sname, $orderId){
-	
+//function linkCRMContact($emailAddress, $fname, $sname, $orderId){
+//
 //	$uri="https://api.hubapi.com/contacts/v1/contact/email/".$emailAddress."/profile?hapikey=".HUBSPOT_API_KEY;
 //
 //	$response = \Httpful\Request::get($uri)->send();
@@ -154,12 +154,12 @@ function linkCRMContact($emailAddress, $fname, $sname, $orderId){
 //	}
 //
 //	addHareUrlToCRM($emailAddress,$orderId);
+//
+//	return "";
+//}
 
-	return "";
-}
-
-function addHareUrlToCRM($emailAddress, $orderId){
-	
+//function addHareUrlToCRM($emailAddress, $orderId){
+//
 	//NOT IMPLEMENTED
 	// if( !$emailAddress && !$orderId )
 	// 	return null;
@@ -185,11 +185,11 @@ function addHareUrlToCRM($emailAddress, $orderId){
 	//     ->send();
 	//
 	// $contactResponse = $response->body;
-}
+//}
 
 
-function addCRMContact($emailAddress, $fname, $sname){
-	
+//function addCRMContact($emailAddress, $fname, $sname){
+//
 	//NOT IMPLEMENTED
 	// if( !$emailAddress )
 	// 	return null;
@@ -222,10 +222,10 @@ function addCRMContact($emailAddress, $fname, $sname){
 	// 	$link = $response->body->{'profile-url'};
 	//
 	// 	return $link;
-}
+//}
 
-function updateCRMLink($crmLink,$orderId){
-	
+//function updateCRMLink($crmLink,$orderId){
+//
 	//NOT IMPLEMENTED
 	// $mysqli = mysqli_connect(DBHOST, DBUSER, DBPASS, DBNAME);
 	// if (mysqli_connect_errno()) {
@@ -245,7 +245,7 @@ function updateCRMLink($crmLink,$orderId){
 	//
 	// $stmt->close();
 	// $mysqli->close();
-}
+//}
 
 
 function fetchGeoData($town,$country){

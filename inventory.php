@@ -80,7 +80,7 @@ $resultsSize = $stmt->num_rows;
 
 $countries = fetchCountriesArray();
 $allSuppliers = fetchAllSuppliers(true);
-$allCategories = fetchAllCategories(false);
+$allCategories = fetchAllCategories();
 $invLocations = fetchInvLocations();
 $componentTemplates = fetchComponentTemplates();
 

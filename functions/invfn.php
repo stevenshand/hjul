@@ -166,11 +166,7 @@ return $locations;
 
 }
 
-
-
-function fetchAllCategories($fab){
-
-$tableName = $fab ? "fab_categories" : "inv_categories";
+function fetchAllCategories(){
 
 $mysqli = mysqli_connect(DBHOST, DBUSER, DBPASS, DBNAME);
 
@@ -183,7 +179,7 @@ $query =
 		id, 
 		name
 	FROM 
-		".$tableName." 
+		inv_categories 
 	ORDER BY 
 		name";
 
@@ -332,6 +328,9 @@ return $statuses;
 class Supplier{
     public $value;
     public $text;
+    public $contact;
+    public $email;
+    public $country;
     public function __construct($value)
     {
         $this->value = $value;
@@ -407,6 +406,16 @@ return $suppliers;
 
 }
 
+class Category{
+    public $value;
+    public $text;
+    public function __construct($value,$text)
+    {
+        $this->value = $value;
+        $this->text = $text;
+    }
+}
+
 function fetchCategories($fab){
 
 $tableName = $fab ? "fab_categories" : "inv_categories";
@@ -442,8 +451,8 @@ $itemsSize = $stmt->num_rows;
 $categories = array();
 $index = 0;
 while( $stmt->fetch() ){
-	$categories[$index]->value = $id;
-	$categories[$index]->text = $name;
+    $category = new Category($id,$name);
+    array_push( $categories, $category );
 	$index = $index+1;
 }
 
