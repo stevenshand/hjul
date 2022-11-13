@@ -4,7 +4,7 @@ require '../configuration.php';
 require '../functions/harefn.php';
 require '../functions/invfn.php';
 
-$list = fetchAllPOStatuses(true); 
+$list = fetchAllPOStatuses();
 	
 echo json_encode($list);
 

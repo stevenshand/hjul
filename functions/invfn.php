@@ -312,12 +312,12 @@ $stmt->bind_result($id, $status );
 $stmt->store_result();
 $itemsSize = $stmt->num_rows;
 
-$statuses = array();
+$statuses = [];
 $index = 0;
+
+$statuses = array();
 while( $stmt->fetch() ){
-	$statuses[$index]->value = $id;
-	$statuses[$index]->text = $status;
-	$index = $index+1;
+    $statuses[$id] = $status;
 }
 
 //var_dump($suppliers);
