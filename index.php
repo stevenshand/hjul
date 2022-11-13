@@ -285,7 +285,7 @@ include 'inc/header.php';
 			
 					<?php while ($stmt->fetch()) {
 						
-							$stockStatus = fetchStockStatus($orderId, $rollingStockCount );
+//							$stockStatus = fetchStockStatus($orderId, $rollingStockCount );
 							
 							$totalPrice = fetchTotalPrice($orderId);
 							
@@ -322,13 +322,13 @@ include 'inc/header.php';
 							if( $sizeConfirmed < 1 ){
 								$sizeConfirmedClass = " bg-danger";
 							}
-							
-							
+
 							$lateClass = "onschedule";
 							if( $statusId < 8 && isLate($orderDate) ){
 								$lateClass = "isLate";
 							}
-							$shippedClass = ( $statusId == 8 ? "bg-success" : "" );
+
+                            $shippedClass = ( $statusId == 8 ? "bg-success" : "" );
 							if( $cancelled ){
 								$shippedClass = "bg-danger text-muted";
 							}
@@ -382,45 +382,7 @@ include 'inc/header.php';
 							<td class="center" title="<?php echo $shippingDate ?>"><a href="" data-toggle="modal" data-orderid="<?php echo $orderId ?>" data-target="#shippingModal"><span class="glyphicon glyphicon-plane" aria-hidden="true"></span><sup style="color:red"><?php echo( $shippingEntries > 0 ? $shippingEntries : "" ) ?></sup></a></td>	
 							
 							<td class="center"><a href="" data-toggle="modal" data-orderid="<?php echo $orderId ?>" data-target="#commentModal"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span><sup style="color:red"><?php echo( $commsEntries > 0 ? $commsEntries : "" ) ?></sup></a></td>	
-							
-							<?php 
-								$stockStatusText = "No BOM has been created for this order";
-								$stockStatusClass = " bg-warning";
-								$stockStatusMessage = "";
-								if( hasBOM($orderId) ){
-									if( count($stockStatus->osstockItems) > 0 ){
-										$expand = true;
-										$stockStatusMessage = fetchStockItemDetail($stockStatus->osstockItems);
-										$stockStatusText = "Out of stock items for this BOM";
-										$stockStatusClass =  " bg-danger";
-									}else{
-										$expand = false;
-										$stockStatusText = "All items are in stock for this BOM";
-										$stockStatusClass =  " bg-success";
-									}
-								}
-							?>
-							<td data-toggle="tooltip" 
-								data-html="true" 
-								data-container="body" 
-								data-placement="left" 
-								title="<?php echo $stockStatusText ?>" class="center<?php echo $stockStatusClass ?>">
-								
-								<span 
-								data-toggle="<?php echo $expand ? 'collapse' : 'null' ?>"
-								data-target="#<?php echo $orderId ?>_stock"
-								class="glyphicon glyphicon-barcode" aria-hidden="true"></span>
-							</td>	
 
-						</tr>
-						<tr class="collapse no-export missingBomContainer" id="<?php echo $orderId ?>_stock">
-							<td colspan="12">
-								<h4>The following items are needed to complete this build :</h4>
-								<table class='table table-condensed table-bordered table-striped'>
-									<tr><th>SKU</th><th>Item</th><th>Cost</th><th>In Stock</th><th>On order</th></tr>
-									<?php echo $stockStatusMessage ?>
-								</table>	
-						</td>
 					<?php }?>
 				</tbody>			
 				</table>	

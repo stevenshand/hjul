@@ -11,10 +11,9 @@ if (mysqli_connect_errno()) {
 
 $itemListQuery = 
 "SELECT id,
-		name
-FROM 	inv_categories"; 
-
-//echo ($itemListQuery);
+		name, 
+		category_group
+FROM 	inv_categories";
 
 if (!($stmt = $mysqli->prepare($itemListQuery))) {
     echo "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
@@ -24,7 +23,7 @@ if (!$stmt->execute()) {
     echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
 }
 
-$stmt->bind_result($id, $category );
+$stmt->bind_result($id, $category, $group );
 $stmt->store_result();
 $resultsSize = $stmt->num_rows;
 
@@ -32,16 +31,50 @@ include 'inc/header.php';
 ?>
 
 <!-- MODALS  -->
-<!-- new order modal -->
-<div class="modal fade" id="newCategoryModal" tabindex="-1" role="dialog" >
+<!-- new category group modal -->
+<div class="modal fade" id="newCategoryGroupModal" tabindex="-1" role="dialog" >
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 	  
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				<h4>Add New Category</h4>
+				<h4>Add New Category Group</h4>
 			</div>
       
+			<div class="modal-body">
+
+				<form action="/actions/addCategoryGroup.php" class="form">
+					<div class="container-fluid"><!--container-->
+						<div class="row"><!--row1-->
+						<div class="col-md-7">
+							<div class="form-group">
+								<label for="nameinput">Category Group Name</label>
+								<input type="text" class="form-control" name="name" id="groupnameinput" placeholder="Group Name">
+							</div>
+							<div class="form-group text-right">
+								<button type="submit" class="btn btn-primary">Add Group</button>
+							</div>
+						</div>		
+						
+					  </div><!--row1-->
+				  </div><!--container-->
+				  
+			  </form>
+		  </div>
+		</div>
+	</div>
+</div>
+
+<!-- new category modal -->
+<div class="modal fade" id="newCategoryModal" tabindex="-1" role="dialog" >
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4>Add New Category</h4>
+			</div>
+
 			<div class="modal-body">
 
 				<form action="/actions/addCategory.php" class="form">
@@ -49,17 +82,25 @@ include 'inc/header.php';
 						<div class="row"><!--row1-->
 						<div class="col-md-7">
 							<div class="form-group">
-								<label for="nameinput">Category Name</label>
+								<label class="form-label"  for="nameinput">Category Name</label>
 								<input type="text" class="form-control" name="name" id="nameinput" placeholder="Category Name">
 							</div>
-							<div class="form-group text-right">
+                            <div class="form-group">
+                                <label class="form-label" for="groupinput">Category Group</label><br>
+                                <select name="group" id="groupinput">
+                                    <option value="1">Components</option>
+                                    <option value="2">Fabrication</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group text-right">
 								<button type="submit" class="btn btn-primary">Add Category</button>
 							</div>
-						</div>		
-						
+						</div>
+
 					  </div><!--row1-->
 				  </div><!--container-->
-				  
+
 			  </form>
 		  </div>
 		</div>
@@ -76,7 +117,8 @@ include 'inc/header.php';
 		<div class="col-md-12">
 			<button title="View Items" class="btn btn-default"><a href="/inventory.php">View Items</a></button>
 			<button title="add new category" data-toggle="modal" data-target="#newCategoryModal" class="btn btn-default">Add New Category</button>
-		</div>	
+			<button title="add new category group" data-toggle="modal" data-target="#newCategoryGroupModal" class="btn btn-default">Add New Category Group</button>
+		</div>
 	</div>	
 
 
@@ -87,11 +129,13 @@ include 'inc/header.php';
 					<tbody>
 					<tr>
 						<th>Category</th>
+						<th>Group</th>
 					</tr>
 			
 					<?php while ($stmt->fetch()) { ?>
 						<tr>
 							<td><?php echo $category  ?></td>
+							<td><?php echo ( $group == 1 ? "Components" : "Fabrication" ) ?></td>
 						</tr>
 					<?php }?>
 				</tbody>			

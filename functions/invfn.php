@@ -284,6 +284,40 @@ return $statuses;
 
 }
 
+function fetchAllInventoryCategoryGroups(){
+    $mysqli = mysqli_connect(DBHOST, DBUSER, DBPASS, DBNAME);
+    if (mysqli_connect_errno()) {
+        echo "Failed to connect to MySQL: " . mysqli_connect_error();
+    }
+
+    $query =
+        "SELECT 
+		id, 
+		name
+	FROM 
+		inv_category_group";
+
+    if (!($stmt = $mysqli->prepare($query))) {
+        echo "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
+    }
+
+    if (!$stmt->execute()) {
+        echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+    }
+
+    $stmt->bind_result($id, $name );
+
+    $stmt->store_result();
+
+    $groups = array();
+    while( $stmt->fetch() ){
+        $groups[$id] = $name;
+    }
+
+    return $groups;
+
+}
+
 function fetchAllPOStatuses(){
 
 $mysqli = mysqli_connect(DBHOST, DBUSER, DBPASS, DBNAME);
