@@ -1,8 +1,9 @@
 <?php
 
-require __DIR__.'/../configuration.php';
+require_once __DIR__.'/../configuration.php';
 
-$id = $_GET["po_id"];	
+
+$id = $_GET["po_id"];
 
 $mysqli = mysqli_connect(DBHOST, DBUSER, DBPASS, DBNAME);
 

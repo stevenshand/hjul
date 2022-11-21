@@ -14,7 +14,6 @@ if (mysqli_connect_errno()) {
 $orderListQuery = 
 	"SELECT 
 	UNIX_TIMESTAMP(order_date) as dt, 
-	target_week, 
 	sname, 
 	fname,
 	email,
@@ -58,7 +57,7 @@ if (!$stmt->execute()) {
     echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
 }
 
-$stmt->bind_result($orderDate, $targetWeek, $sname, $fname, $email, $frameNumber, $modelId, $modelName, $frameSize, $orderStatus, $frameOnly, $statusId, $fabDetails, $paintDetails, $assemblyDetails, $basePrice, $vatExempt, $notes, $shippingNotes, $shippingDate, $shippingMethod, $trackingNumber, $tel1, $tel2 );
+$stmt->bind_result($orderDate, $sname, $fname, $email, $frameNumber, $modelId, $modelName, $frameSize, $orderStatus, $frameOnly, $statusId, $fabDetails, $paintDetails, $assemblyDetails, $basePrice, $vatExempt, $notes, $shippingNotes, $shippingDate, $shippingMethod, $trackingNumber, $tel1, $tel2 );
 $stmt->store_result();
 $stmt->fetch();
 
@@ -87,7 +86,8 @@ include 'inc/header.php';
 		<?php echo ( $frameSize == "TBC" ? "________" : $frameSize ) ?>
 	</h1>
 	<h1>
-		<?php echo $sname ?><span class="text-right">&nbsp;#<?php echo $orderId ?>&nbsp;&nbsp;[<?php echo $targetWeek ?>]</span>
+<!--TODO TARGET WEEK-->
+		<?php echo $sname ?><span class="text-right">&nbsp;#<?php echo $orderId ?>&nbsp;&nbsp;[TARGET WEEK!!]</span>
 	</h1>		
 </div>
 

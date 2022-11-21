@@ -12,8 +12,8 @@ $poId = $_POST["poId"];
 
 $reload = false;
 
-$err;
-$msg;
+$err = "";
+$msg = "";
 
 $loc = getLocation($poId);
 

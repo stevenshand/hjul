@@ -4,7 +4,7 @@ require('../configuration.php');
 
 $orderId = $_GET["orderId"];
 $orderDate = $_GET["orderDate"];
-$targetWeek = $_GET["targetWeek"];
+$targetDate = $_GET["targetDate"];
 $targetLocked = $_GET["targetLocked"];
 $reconciled = $_GET["reconciled"];
 $status = $_GET["status"];
@@ -18,12 +18,12 @@ if (mysqli_connect_errno()) {
     echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
 
-$statement = "UPDATE orders set order_date = ?, target_week = ?, target_locked = ?, reconciled = ?, status = ?, location = ?, shipping_location = ?, promo_code = ?, lead = ? where id = ?";
+$statement = "UPDATE orders set order_date = ?, target_date = ?, target_locked = ?, reconciled = ?, status = ?, location = ?, shipping_location = ?, promo_code = ? where id = ?";
 if (!($stmt = $mysqli->prepare($statement))) {
     echo "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
 }	
 	
-if (!$stmt->bind_param("siiiiiissi", $orderDate, $targetWeek, $targetLocked, $reconciled, $status, $location, $shippingLocation, $promoCode, $lead, $orderId )) {
+if (!$stmt->bind_param("ssiiiiisi", $orderDate, $targetDate, $targetLocked, $reconciled, $status, $location, $shippingLocation, $promoCode, $orderId )) {
     echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
 }	
 

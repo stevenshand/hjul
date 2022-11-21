@@ -177,12 +177,27 @@ include 'inc/header.php';
 		<div class="panel-body">	
 			<div class="row">	
 				<div class="col-md-12">
-				   <?php echo $notes ?> 	   
-				</div>   
+				   <?php echo nl2br( isset($notes) ? $notes : "") ?>
+                </div>
 			</div>   
 		</div>   
 	</div>
-	
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Components</h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <?php include 'inc/components_view_list.php' ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
 	<div class="panel panel-default">
 		<div class="panel-heading">
 			<h3 class="panel-title">Images</h3>
@@ -302,8 +317,8 @@ include 'inc/header.php';
 					<dt>Tracking No : </dt>
 					<dd><?php echo $trackingNumber ?></dd>
 					<dt>Shipping Notes : </dt>
-					<dd><?php echo nl2br($shippingNotes) ?></dd>
-				</dl>		
+					<dd><?php echo nl2br( isset($shippingNotes) ? $shippingNotes : "") ?></dd>
+				</dl>
 			  </div>
 			</div>
 					

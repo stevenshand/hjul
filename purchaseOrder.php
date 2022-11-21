@@ -1,6 +1,6 @@
 <?php
 
-require __DIR__.'/configuration.php';
+require_once __DIR__.'/configuration.php';
 require __DIR__.'/functions/harefn.php';
 require __DIR__.'/functions/invfn.php';
 	

@@ -21,9 +21,9 @@ if (mysqli_connect_errno()) {
 $query = 
 "SELECT orders.id as orderId,
 		UNIX_TIMESTAMP(order_date) as dt,
+		UNIX_TIMESTAMP(target_date) as td,
 		location,
 		shipping_location,
-		target_week,
 		target_locked,
 		status.status,
 		orders.status,
@@ -45,7 +45,7 @@ if (!$stmt->execute()) {
     echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
 }
 
-$stmt->bind_result($orderId, $orderDate, $location, $shipping_location, $targetWeek, $targetLocked, $status, $statusId, $reconciled, $promo_code );
+$stmt->bind_result($orderId, $orderDate, $targetDate, $location, $shipping_location, $targetLocked, $status, $statusId, $reconciled, $promo_code );
 $stmt->store_result();
 $stmt->fetch();
 
@@ -139,7 +139,7 @@ $statuses = fetchStatusArray();
   </dd>
   <?php } else {?>
   <dd>
-	<?php echo Date( DATEFORMAT, $orderDate ) ?> (week <?php echo wkNum($orderDate) ?>)
+	<?php echo Date( DATEFORMAT, $orderDate ) ?>, (week <?php echo wkNum($orderDate) ?>)
   </dd>
 <?php } ?>
   
@@ -149,11 +149,12 @@ $statuses = fetchStatusArray();
   <dt>Expected Completion</dt>
   <?php if ($edit) {?>
   <dd>
-	  <input type="number" name="targetWeek" id="targetWeek" value="<?php echo $targetWeek ?>">
+      <input type="date" name="targetDate" id="targetDate" value="<?php echo Date( INPUTFIELDDATEFORMAT, $targetDate ) ?>">
+<!--	  <input type="number" name="targetWeek" id="targetWeek" value="--><?php //echo wkNum($targetDate) ?><!--">-->
   </dd>
   <?php } else {?>
   <dd>
-	Week <?php echo $targetWeek ?>
+      <?php echo Date( DATEFORMAT, $targetDate ) ?>, (week <?php echo wkNum($targetDate) ?>)
   </dd>
 <?php } ?>
 <!-- target date -->
@@ -242,7 +243,7 @@ function displayWeekNumber( event ){
   function editOrderDetails( orderId ){
 	
 	var orderDate = $('#orderDate').val();
-	var targetWeek = $('#targetWeek').val();
+	var targetDate = $('#targetDate').val();
 	var targetLocked = ( $('#targetLocked').is(':checked') ) ? "1" : "0";
 	var reconciled = ( $('#reconciled').is(':checked') ) ? "1" : "0";
 	var statusId = $('#status').val(); 
@@ -255,7 +256,7 @@ function displayWeekNumber( event ){
 		{ name: "orderDate", value: orderDate },
 		{ name: "targetLocked", value: targetLocked },
 		{ name: "reconciled", value: reconciled },
-		{ name: "targetWeek", value: targetWeek },
+		{ name: "targetDate", value: targetDate },
 		{ name: "orderId", value: orderId, },
 		{ name: "status", value: statusId },
 		{ name: "shippingLocation", value: shippingLocation },

@@ -13,7 +13,8 @@ $itemListQuery =
 "SELECT id,
 		name, 
 		category_group
-FROM 	inv_categories";
+FROM 	inv_categories
+ORDER BY category_group, name ASC";
 
 if (!($stmt = $mysqli->prepare($itemListQuery))) {
     echo "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;

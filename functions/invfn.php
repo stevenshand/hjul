@@ -1,6 +1,6 @@
 <?php
 
-include_once ( __DIR__.'/../configuration.php' );
+//require ( __DIR__.'/../configuration.php' );
 
 function userList(){
 	

@@ -25,7 +25,7 @@ $files =  fileList($orderId);
   	<a href="javascript:enableFilesEdit();"><span style="float:right;" class="glyphicon glyphicon-edit"></span></a>
 	<?php }?>
 
-    <h3 class="panel-title">Files</h3>
+    <h3 class="panel-title">Files<span class="small"> (<?php echo FILESDIR."/".$orderId ?>)</span></h3>
   </div>
 
 <div class="panel-body">
@@ -107,21 +107,21 @@ function fileUploadDisplay(e){
 
 function uploadFile(event, file){
 	$("#uploadMessage").html( "uploading " + file.name + "..." );
-	var data = new FormData();   
+	let data = new FormData();
 	data.append('file', file, file.name);
     data.append('orderId', orderId);
 	
-    var xhr = new XMLHttpRequest();     
+    let xhr = new XMLHttpRequest();
     
     xhr.open('POST', 'actions/fileupload.php', true);  
     xhr.send(data);
 	
     xhr.onload = function () {
-        var response = JSON.parse(xhr.responseText);
+        let response = JSON.parse(xhr.responseText);
         if(xhr.status === 200 && response.status == 'ok'){
 			$('#filesPanel').load( "panels/files_panel.php?mode=VIEW&orderId=<?php echo $orderId ?>" );
         }else{
-            $("#uploadMessage").html("Some problem occured, please try again.");
+            $("#uploadMessage").html("Some problem occured, please try again." );
         }
     };
 }

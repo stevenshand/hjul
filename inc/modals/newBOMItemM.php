@@ -1,8 +1,8 @@
 <?php
-
-$searchField;
-
-?>
+//
+//$searchField;
+//
+//?>
 
 
 <div class="modal fade" id="newBOMItemModal" tabindex="-1" role="dialog" >
@@ -17,7 +17,7 @@ $searchField;
 				<div class="container-fluid">
 					<div class="row">
 						<div class="col-md-12">
-								<input id="search" name="search" type="search" value="<?php echo $searchField ?>" placeholder="Search...">
+								<input id="search" name="search" type="search" value="" placeholder="Search...">
 								&nbsp;&nbsp;&nbsp;
 								<button id="BOMItemSearch" class="glyphicon glyphicon-refresh"></button>  
 						</div>

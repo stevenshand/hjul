@@ -55,9 +55,9 @@ $stmt->fetch();
 	<dl class="dl-horizontal">
 	<dt>Notes</dt>
 	    <?php if($edit) {?>
-	<dd><textarea name="order_notes" id="order_notes" cols="45" rows="5"><?php echo $notes ?></textarea></dd>		
+	<dd><textarea name="order_notes" id="order_notes" cols="45" rows="5"><?php echo $notes ?></textarea></dd>
 	    <?php } else {?>	  
-	<dd><?php echo nl2br($notes) ?></dd>		
+	<dd><?php echo nl2br(isset($notes) ? $notes : "") ?></dd>
 		<?php } ?>
 	</dl>	
 

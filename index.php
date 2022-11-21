@@ -40,7 +40,7 @@ if (mysqli_connect_errno()) {
 $orderListQuery = 
 "SELECT orders.id as orderId,
 		UNIX_TIMESTAMP(order_date) as dt,
-		target_week,
+		UNIX_TIMESTAMP(target_date),
 		target_locked,
 		sname,
 		fname,
@@ -76,7 +76,7 @@ LEFT JOIN
 ON orders.model = models.id		
 LEFT JOIN 
 		sizes
-ON orders.size = sizes.id ".$searchString.$concatString.($showShipped ? " orders.status > 0 " : " orders.status != 8 ").$showInternalQuery." GROUP BY orders.id ORDER BY " . $sortField . " ".$sortOrder.", order_date ASC, target_week ASC";
+ON orders.size = sizes.id ".$searchString.$concatString.($showShipped ? " orders.status > 0 " : " orders.status != 8 ").$showInternalQuery." GROUP BY orders.id ORDER BY " . $sortField . " ".$sortOrder.", order_date ASC";
 
 // echo($orderListQuery );
 
@@ -88,7 +88,7 @@ if (!$stmt->execute()) {
     echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
 }
 
-$stmt->bind_result($orderId, $orderDate, $targetWeek, $targetLocked, $sname, $fname, $modelName, $brandId, $frameSize, $orderStatus, $frameOnly, $internal, $uuid, $paymentPending, $invoicable, $statusId, $shippingEntries, $commsEntries, $shippingDate, $vatExempt, $sizeConfirmed, $paintConfirmed, $cancelled );
+$stmt->bind_result($orderId, $orderDate, $targetDate, $targetLocked, $sname, $fname, $modelName, $brandId, $frameSize, $orderStatus, $frameOnly, $internal, $uuid, $paymentPending, $invoicable, $statusId, $shippingEntries, $commsEntries, $shippingDate, $vatExempt, $sizeConfirmed, $paintConfirmed, $cancelled );
 $stmt->store_result();
 $resultsSize = $stmt->num_rows;
 
@@ -339,7 +339,14 @@ include 'inc/header.php';
 							<td><?php echo $brands[$brandId] ?></td>
 							<td><?php echo date( DATEFORMAT, $orderDate ) ?></td>
 							<td class="<?php echo $lateClass ?>">
-								<a href="board.php#row<?php echo $targetWeek  ?>"><?php echo $targetWeek  ?></a>
+                            <?php
+                                $target = "n/a";
+                                if( isset($targetDate) ){
+                                    $target = "week ".wkNum($targetDate).", '".date('y', $targetDate );
+                                }
+                            ?>
+
+                			<a href="board.php#row<?php echo  wkNum($targetDate)  ?>"><?php echo $target ?></a>
 								<?php if ($targetLocked){  ?>
 								<span class="glyphicon glyphicon-exclamation-sign"></span>	
 								<?php }?>

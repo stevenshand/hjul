@@ -1,5 +1,5 @@
 <?php
-require 'configuration.php';
+require_once 'configuration.php';
 require 'functions/harefn.php';
 require 'functions/invfn.php';
 	
