@@ -28,6 +28,8 @@ $stmt->bind_result($id, $category, $group );
 $stmt->store_result();
 $resultsSize = $stmt->num_rows;
 
+$categoryGroups = fetchAllCategoryGroups();
+
 include 'inc/header.php';
 ?>
 
@@ -89,8 +91,10 @@ include 'inc/header.php';
                             <div class="form-group">
                                 <label class="form-label" for="groupinput">Category Group</label><br>
                                 <select name="group" id="groupinput">
-                                    <option value="1">Components</option>
-                                    <option value="2">Fabrication</option>
+                                    <?php
+                                    foreach ($categoryGroups as $index => $group) { ?>
+                                        <option value="<?php echo $index ?>"><?php echo $group ?></option>
+                                    <?php } ?>
                                 </select>
                             </div>
 
@@ -136,7 +140,7 @@ include 'inc/header.php';
 					<?php while ($stmt->fetch()) { ?>
 						<tr>
 							<td><?php echo $category  ?></td>
-							<td><?php echo ( $group == 1 ? "Components" : "Fabrication" ) ?></td>
+							<td><?php echo $categoryGroups[$group] ?></td>
 						</tr>
 					<?php }?>
 				</tbody>			

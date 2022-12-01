@@ -70,12 +70,6 @@ include 'inc/header.php';
 				<a href="/orderfabview.php?orderId=<?php echo $orderId ?>">
 					<span title="Fabrication View" class="glyphicon glyphicon-flash"></span>
 				</a>&nbsp;&nbsp;
-	        	<a href="/orderpaintview.php?orderId=<?php echo $orderId ?>">
-					<span title="Paint View" class="glyphicon glyphicon-tint"></span>
-				</a>&nbsp;&nbsp;
-	        	<a href="/orderassview.php?orderId=<?php echo $orderId ?>">
-					<span title="Assembly View" class="glyphicon glyphicon-wrench"></span>
-				</a>&nbsp;&nbsp;
 				<a target="_blank" href="vieworder.php?orderId=<?php echo($uuid) ?>">
 					<span title="Customer View" class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
 				</a>

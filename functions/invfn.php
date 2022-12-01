@@ -205,6 +205,45 @@ while( $stmt->fetch() ){
 return $categories;
 	
 }
+function fetchAllCategoryGroups(){
+
+$mysqli = mysqli_connect(DBHOST, DBUSER, DBPASS, DBNAME);
+
+if (mysqli_connect_errno()) {
+    echo "Failed to connect to MySQL: " . mysqli_connect_error();
+}
+
+$query =
+	"SELECT 
+		id, 
+		name
+	FROM 
+		inv_category_group 
+	ORDER BY 
+		name";
+
+if (!($stmt = $mysqli->prepare($query))) {
+    echo "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
+}
+
+if (!$stmt->execute()) {
+    echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+}
+
+$stmt->bind_result($id, $name );
+
+$stmt->store_result();
+$itemsSize = $stmt->num_rows;
+
+$categoryGroups = array();
+while( $stmt->fetch() ){
+	$categoryGroups[$id] = $name;
+}
+
+
+return $categoryGroups;
+
+}
 
 function fetchSupplierNames(){
 

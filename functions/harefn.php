@@ -54,6 +54,31 @@ function fetchComponentTemplates(){
 	return $componentTemplates;		
 }
 
+function calculateOrderBOMCost($orderId){
+
+    $connection = mysqli_connect(DBHOST, DBUSER, DBPASS, DBNAME);
+    if (mysqli_connect_errno()) {
+        echo "Failed to connect to MySQL: " . mysqli_connect_error();
+    }
+
+    $query = "select sum( (inv_items.cost*order_bom.qty) ) from order_bom left join inv_items on inv_items.id=order_bom.item where orderID =".$orderId;
+
+    if (!($stmt = $connection->prepare($query))) {
+        echo "Prepare failed: (" . $connection->errno . ") " . $connection->error;
+    }
+
+    if (!$stmt->execute()) {
+        echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+    }
+
+    $stmt->bind_result($bomCost);
+    $stmt->store_result();
+    $stmt->fetch();
+
+    return $bomCost;
+}
+
+
 function calculateBOMCost($bomId){
 	
 	$connection = mysqli_connect(DBHOST, DBUSER, DBPASS, DBNAME);

@@ -87,7 +87,7 @@ include 'inc/header.php';
 	</h1>
 	<h1>
 <!--TODO TARGET WEEK-->
-		<?php echo $sname ?><span class="text-right">&nbsp;#<?php echo $orderId ?>&nbsp;&nbsp;[TARGET WEEK!!]</span>
+		<?php echo $sname ?><span class="text-right">&nbsp;#<?php echo $orderId ?></span>
 	</h1>		
 </div>
 

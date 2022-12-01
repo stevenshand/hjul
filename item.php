@@ -94,7 +94,7 @@ include 'inc/header.php';
 	
 	<div class="row">
 		<div class="col-md-12">
-			<button title="add new Item" data-toggle="modal" data-target="#newItemModal" class="btn btn-default">Add New Item</button>
+			<button title="Add New Item" data-toggle="modal" data-target="#newItemModal" class="btn btn-default">Add New Item</button>
 			<button title="View Suppliers" class="btn btn-default"><a href="/suppliers.php">View Suppliers</a></button>
 			<button title="View Items" class="btn btn-default"><a href="/inventory.php">View Items</a></button>
 		</div>	

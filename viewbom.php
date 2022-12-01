@@ -37,7 +37,7 @@ LEFT JOIN order_bom
 ON order_bom.item = inv_items.id
 LEFT JOIN inv_po_lines
 ON inv_po_lines.item_id = inv_items.id
-WHERE order_bom.orderId =".$orderId.  	
+WHERE order_bom.orderId =".$orderId.
 " GROUP BY order_bom.id 
  ORDER BY cn, short_name, variation";
 
@@ -159,47 +159,47 @@ include 'inc/header.php';
 						<?php if(!$stockOut) {?>
 						<th></th>
 						<?php } ?>
-						<th>Category</th><th>SKU</th><th>Item</th><th>Supplier</th><th>Supplier Code</th><th>Variation</th><th>QTY</th><th>In Stock</th><th>On Order</th><th>Cost</th><th>Total</th>
+                        <th>Category</th><th>SKU</th><th>Item</th><th>Supplier</th><th>Supplier Code</th><th>Variation</th><th>QTY</th><th>In Stock</th><th>On Order</th><th>Cost</th><th>Total</th>
 					</tr>
 			
 					<?php
 						$stockValuation = 0;
-						while ($stmt->fetch()) { 
-							$stockValuation += $totalItemCost;  
-															
+						while ($stmt->fetch()) {
+							$stockValuation += $totalItemCost;
+
 							?>
 						<tr>
 						<?php if(!$stockOut) {?>
-							<td class="center"><a href="actions/removeItemFromBOM.php?orderId=<?php echo($orderId) ?>&amp;lineId=<?php echo $lineId ?>"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></td>	
-						<?php } ?>	
-							<td style="font-size:smaller;"><?php echo $categoryName ?></td>
+							<td class="center"><a href="actions/removeItemFromBOM.php?orderId=<?php echo($orderId) ?>&amp;lineId=<?php echo $lineId ?>"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></td>
+						<?php } ?>
+                            <td style="font-size:smaller;"><?php echo $categoryName ?></td>
 
 							<td><a href="/item.php?itemId=<?php echo $itemId ?>"><?php echo $itemId ?></a></td>
-							
-							<td data-toggle="tooltip" 
-								data-html="true" 
-								data-container="body" 
-								data-placement="right" 
+
+							<td data-toggle="tooltip"
+								data-html="true"
+								data-container="body"
+								data-placement="right"
 								title="<?php echo $description ?>"><?php echo $item  ?></td>
-							
+
 							<td style="font-size:smaller;"><?php echo $supplier ?></td>
 
 							<td style="font-size:smaller;"><?php echo $supplierCode ?></td>
-							
+
 							<td style="font-size:smaller;"><?php echo $variation ?></td>
 
-							<?php $stockClass = ( $stockLevel < $qty ? "danger" : "" ); ?>		
+							<?php $stockClass = ( $stockLevel < $qty ? "danger" : "" ); ?>
 
 							<td class="<?php echo $stockClass ?>"><?php echo ( trimForCSV($qty) ) ?>
 							</td>
-							
+
 
 							<td class="<?php echo $stockClass ?>"><?php echo ( trimForCSV($stockLevel) ) ?></td>
 							<td><?php echo $onorder ?></td>
 
 							<td ><?php curry($cost) ?></td>
-							
-							<td><?php echo curry($totalItemCost) ?></td>								 
+
+							<td><?php echo curry($totalItemCost) ?></td>
 						</tr>
 					<?php }?>
 						<tr>

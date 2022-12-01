@@ -5,18 +5,20 @@ require('../configuration.php');
 $orderId = $_GET["orderId"];
 $modelId = $_GET["modelId"];
 $sizeId = $_GET["sizeId"];
-$basePrice = $_GET["basePrice"];
+
+$basePrice = ( isset( $_GET["basePrice"] ) && ( $_GET["basePrice"] > 0 ) ? $_GET["basePrice"] : "0" );
 $frameNumber = $_GET["frameNumber"];
 $frameOnly = ( $_GET["frameOnly"] == "true" ? "1" : "0" );
 $sizeConfirmed = ( $_GET["sizeConfirmed"] == "true" ? "1" : "0" );
 
-// echo('<br>'.$orderId);
-// echo('<br>'.$modelId);
-// echo('<br>'.$sizeId);
-// echo('<br>'.$basePrice);
-// echo('<br>'.$frameOnly);
-// echo('<br>'.$sizeConfirmed);
-//
+//echo('<br>--'.isset( $_GET["basePrice"]) );
+//echo('<br>'.$orderId);
+//echo('<br>'.$modelId);
+//echo('<br>'.$sizeId);
+//echo('<br>'.$basePrice);
+//echo('<br>'.$frameOnly);
+//echo('<br>'.$sizeConfirmed);
+
 $mysqli = mysqli_connect(DBHOST, DBUSER, DBPASS, DBNAME);
 if (mysqli_connect_errno()) {
     echo "Failed to connect to MySQL: " . mysqli_connect_error();

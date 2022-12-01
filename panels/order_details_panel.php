@@ -28,7 +28,8 @@ $query =
 		status.status,
 		orders.status,
 		reconciled,
-		promo_code
+		promo_code,
+		vat_exempt
 FROM 	orders 
 LEFT JOIN 
 		status
@@ -45,7 +46,7 @@ if (!$stmt->execute()) {
     echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
 }
 
-$stmt->bind_result($orderId, $orderDate, $targetDate, $location, $shipping_location, $targetLocked, $status, $statusId, $reconciled, $promo_code );
+$stmt->bind_result($orderId, $orderDate, $targetDate, $location, $shipping_location, $targetLocked, $status, $statusId, $reconciled, $promo_code, $vat_exempt );
 $stmt->store_result();
 $stmt->fetch();
 
@@ -196,26 +197,46 @@ $statuses = fetchStatusArray();
 <!-- Promo Code -->
 
 
-<!-- total cost -->
-  <dt>Total Cost</dt>
+<!-- total price -->
+  <dt>Total Price</dt>
   <dd>
-	  <?php curry( $totalCost) ?>
+	  <?php echo curry( $totalCost) ?>
   </dd>
-<!-- total cost -->
+<!-- total price -->
 
-<!-- total cost -->
   <dt>Total Payments</dt>
   <dd>
-	  <?php curry( $totalPayments) ?>
+	  <?php echo curry( $totalPayments) ?>
   </dd>
-<!-- total cost -->
 
-<!-- total cost -->
   <dt>Balance</dt>
   <dd>
-	  <?php curry($totalCost-$totalPayments) ?>
+	  <?php echo curry($totalCost-$totalPayments) ?>
   </dd>
-<!-- total cost -->
+
+    <hr>
+
+    <dt>Total Cost</dt>
+    <dd>
+    <?php $bomCost = calculateOrderBOMCost($orderId) ?>
+    <?php echo curry( $bomCost ) ?>
+    </dd>
+
+    <dt>Margin</dt>
+    <dd>
+    <?php
+        $taxFactor = $vat_exempt ? 1 : 1.2;
+        $margin = ( ( ($totalCost/$taxFactor)-$bomCost ) / ($totalCost/1.2) )*100  ?>
+    <?php echo round($margin)."%" ?>
+    </dd>
+
+    <dt>Cash Margin</dt>
+    <dd>
+    <?php $cashMargin = ( ($totalCost/$taxFactor)-$bomCost )  ?>
+    <?php echo curry( $cashMargin ) ?>
+    </dd>
+
+
 
 </dl>
  

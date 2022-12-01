@@ -133,7 +133,7 @@ $stmt->fetch();
   <?php if($edit) {?>
   <dd><input min="1" step="any" type="number" name="editBasePriceField" id ="editBasePriceField" value="<?php echo $basePrice ?>"></dd>
   <?php } else {?>	  
-  <dd><?php curry($basePrice) ?></dd>
+  <dd><?php echo curry($basePrice) ?></dd>
   <?php } ?>
 <!-- base price -->	
 
