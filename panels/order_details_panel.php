@@ -50,7 +50,11 @@ $stmt->bind_result($orderId, $orderDate, $targetDate, $location, $shipping_locat
 $stmt->store_result();
 $stmt->fetch();
 
-$totalCost = totalCost($orderId); 
+$totalCost = totalCost($orderId);
+
+if (!isset($totalCost)){
+    $totalCost = 0;
+}
 $totalPayments = totalPayments($orderId); 
 
 $statuses = fetchStatusArray();
@@ -216,6 +220,8 @@ $statuses = fetchStatusArray();
 
     <hr>
 
+    <?php if ( $totalCost > 0 ) { ?>
+
     <dt>Total Cost</dt>
     <dd>
     <?php $bomCost = calculateOrderBOMCost($orderId) ?>
@@ -236,7 +242,7 @@ $statuses = fetchStatusArray();
     <?php echo curry( $cashMargin ) ?>
     </dd>
 
-
+    <?php } ?>
 
 </dl>
  

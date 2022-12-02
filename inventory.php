@@ -47,7 +47,8 @@ $itemListQuery =
 		inv_categories.name as cn,
 		supplier_code,
 		inv_location.location,
-		inv_items.location
+		inv_items.location,
+		origin
 FROM 	inv_items
 LEFT JOIN inv_categories
 ON inv_items.category = inv_categories.id 
@@ -74,7 +75,7 @@ if (!$stmt->execute()) {
     echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
 }
 
-$stmt->bind_result($itemId, $item, $description, $variation, $qty, $supplierId, $supplier, $cost, $rrp, $totalItemCost, $categoryId, $categoryName, $supplierCode, $location, $locationId );
+$stmt->bind_result($itemId, $item, $description, $variation, $qty, $supplierId, $supplier, $cost, $rrp, $totalItemCost, $categoryId, $categoryName, $supplierCode, $location, $locationId, $origin );
 $stmt->store_result();
 $resultsSize = $stmt->num_rows;
 
@@ -194,7 +195,7 @@ include 'inc/header.php';
 				<table id="inventoryTable" class="table table-bordered table-condensed">
 					<tbody>
 					<tr>
-						<th>SKU</th><th class="col-md-3">Item</th><th>Category</th><th>Supplier</th><th>Supplier Code</th><th>Description</th><th>Variation</th><th>Location</th><th>RRP</th><th>QTY</th><th>Cost</th><th>Total</th>
+						<th>SKU</th><th class="col-md-3">Item</th><th>Category</th><th>Supplier</th><th>Supplier Code</th><th>Description</th><th>Variation</th><th>Location</th><th>Origin</th><th>RRP</th><th>QTY</th><th>Cost</th><th>Total</th>
 					</tr>
 			
 					<?php
@@ -274,6 +275,21 @@ include 'inc/header.php';
 									data-prepend="" 
 									data-value="<?php echo $locationId ?>">
 										<?php echo $location ?>
+								</a>
+							</td>
+
+                            <td><a 	class="editable"
+									data-type="select"
+									data-title="Origin"
+									data-source="data/countryList.php"
+									data-name="Origin"
+									data-pk="<?php echo $itemId ?>"
+									data-prepend=""
+									data-value="<?php echo $origin ?>">
+										<?php
+                                            if( isset($origin) )
+                                                echo $countries[$origin]
+                                        ?>
 								</a>
 							</td>
 							

@@ -118,7 +118,7 @@ include 'inc/header.php';
 				<hr>
 				<dl class="dl-horizontal">
 					<dt>Model :</dt>
-					<dd class="bigger"><?php echo $modelDisplayName ?></dd>	
+					<dd><?php echo $modelDisplayName ?></dd>
 
 					<dt>Size :</dt>
 					<dd><?php echo $frameSize ?></dd>	
@@ -139,7 +139,7 @@ include 'inc/header.php';
 					<dd>
 						<?php echo ( nl2br($fabDetails).($fabDetails ? "<br>" : "") ) ?>
 						<?php foreach ($fabricationLineItems as $key => $value) {?>
-							<?php echo $key ?> (<?php curry($value) ?>)<br>
+							<?php echo $key ?> (<?php echo curry($value) ?>)<br>
 						<?php }?>
 					</dd>	
 					<?php } ?>
@@ -159,7 +159,7 @@ include 'inc/header.php';
 					<dd>
 						<?php echo ( nl2br($assemblyDetails).($assemblyDetails ? "<br>" : "") ) ?>
 						<?php foreach ($assemblyLineItems as $key => $value) {?>
-						<?php echo $key ?> (<?php curry($value) ?>)<br>
+						<?php echo $key ?> (<?php echo curry($value) ?>)<br>
 						<?php }?>
 					</dd>	
 					<?php } ?>
@@ -330,24 +330,24 @@ include 'inc/header.php';
 			  <div class="panel-body">
 			    <dl class="dl-horizontal">
 					<dt>Base Price</dt>
-					<dd><?php curry($basePrice) ?></dd>	
+					<dd><?php echo curry($basePrice) ?></dd>
 					<dt>Component Upgrades</dt>
-					<dd><?php curry($assemblyLineItemsTotal) ?></dd>	
+					<dd><?php echo curry($assemblyLineItemsTotal) ?></dd>
 					<dt>Frame Upgrades</dt>
-					<dd><?php curry($fabricationLineItemsTotal) ?></dd>	
+					<dd><?php echo curry($fabricationLineItemsTotal) ?></dd>
 					<dt>Paint Upgrades</dt>
-					<dd><?php curry($paintLineItemsTotal) ?></dd>	
+					<dd><?php echo curry($paintLineItemsTotal) ?></dd>
 					<dt>Delivery Costs</dt>
 					<dd><?php echo ( ( $shippingCost > 0 ) ? steph($shippingCost) : "TBC" ) ?></dd>	
 				</dl>	
 					<hr>
 			    <dl class="dl-horizontal">
 					<dt>Total Price</dt>
-					<dd><?php curry($totalPrice) ?></dd>	
+					<dd><?php echo curry($totalPrice) ?></dd>
 					<dt>Payments to Date</dt>
-					<dd><?php curry($totalPayments) ?></dd>	
+					<dd><?php echo curry($totalPayments) ?></dd>
 					<dt>Balance Due</dt>
-					<dd><?php curry($balance) ?></dd>	
+					<dd><?php echo curry($balance) ?></dd>
 					<dt>VAT</dt>
 					<dd><?php echo ($vatExempt ? "NO  VAT" : "inc VAT @ 20%" )?></dd>	
 				</dl>	

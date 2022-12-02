@@ -15,12 +15,16 @@ $itemListQuery =
 		short_name,
 		order_bom.qty,
 		inv_categories.name as cn,
-        inv_categories.category_group
+        inv_categories.category_group,
+        countries.country_code,
+        countries.country_name
 FROM 	inv_items
 LEFT JOIN inv_categories
 ON inv_items.category = inv_categories.id 
 LEFT JOIN order_bom
 ON order_bom.item = inv_items.id
+LEFT JOIN countries
+ON countries.id = inv_items.origin
 WHERE order_bom.orderId =".$orderId.
 " AND inv_categories.category_group = 1    
 GROUP BY order_bom.id 
@@ -36,7 +40,7 @@ if (!$stmt->execute()) {
 	echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
 }
 
-$stmt->bind_result($item, $qty, $categoryName, $group );
+$stmt->bind_result($item, $qty, $categoryName, $group, $countryCode, $countryName );
 $stmt->store_result();
 $resultsSize = $stmt->num_rows;
 
@@ -50,7 +54,7 @@ while ($stmt->fetch()) {
 	<tr>
 		<td style="font-size:smaller;"><?php echo $categoryName ?></td>
 		<td><?php echo $item  ?></td>
-		<td><?php echo ( trimForCSV($qty) ) ?></td>
+		<td title="<?php echo $countryName ?>"><?php echo $countryName ?></td>
 	</tr>
 <?php }?>
 </table>
