@@ -1,0 +1,41 @@
+A - Reach : 580
+B - Saddle height : 855
+C - Handlebar Drop : 90
+D - Bar Type : dropbar
+E - Make : Dawes Galaxy
+F - Model : Galaxy
+G - Size : ?
+comments : Very nice size to spend all day on.
+Cranks 170mm.
+
+
+A - Reach : 575
+B - Saddle height : 880
+C - Handlebar Drop : 110
+D - Bar Type : dropbar
+E - Make : Raleigh
+F - Model : Elan
+G - Size : ?
+comments : One of the two road bikes I use. Feels short and tucked up, but easier on the shoulders than the other one after a few hours.
+Crank 170mm.
+
+
+A - Reach : 650
+B - Saddle height : 845
+C - Handlebar Drop : 90
+D - Bar Type : flatbar
+E - Make : Specialized
+F - Model : Rockhopper
+G - Size : ?
+comments : I use this as a commuter bike these days, so long since I rode it long distances as a mountain bike that I can't remember what it feels like. I think it's hard on the shoulders after a while.
+
+
+A - Reach : 640
+B - Saddle height : 870
+C - Handlebar Drop : 100
+D - Bar Type : dropbar
+E - Make : Silverback
+F - Model : Monterey
+G - Size : ?
+comments : My other road bike, feels much faster - lighter, longer, aluminium instead of steel. But harder after long rides on the shoulders and neck.
+Crank ???

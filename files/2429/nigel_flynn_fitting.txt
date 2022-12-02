@@ -1,0 +1,16 @@
+A - Height : 1850
+B - Torso : 1501
+C - Inseam : 736
+D - Femur : 420
+E - Arm : 620
+F - Shoulder : 510
+G - Weight : 80
+
+A - Reach : 540
+B - Saddle height : 750
+C - Handlebar Drop : 38
+D - Bar Type : flatbar
+E - Make : Onone
+F - Model : 45650B
+G - Size : large
+comments : Riser bar 15mm

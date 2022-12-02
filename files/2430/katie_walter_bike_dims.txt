@@ -1,0 +1,32 @@
+A - Reach : 545
+B - Saddle height : 765
+C - Handlebar Drop : 50
+D - Bar Type : dropbar
+E - Make : specialized
+F - Model : tricross
+G - Size : don't know
+comments : This is my all round Trusty Stead. I've had it for 15 years and it does everything - commuting, touring, very comfortable on dirt tracks. The height measurements are with my new Brooks saddle so might be sitting a 1cm or so above my old brooks saddle's centre. I love love love this bike. I can cycle on it for hours and hours and hours. My handlebars are drop ones with horns over the shifters and i tend to cycle most of the time with my hands either on those horns or on the cross bar rarely on the actual drops apart from on some descents. I know that Jones bars will change the whole geometry of how i sit on my new bike, but this is nigh on perfect fit for me. That may just be a measure of the fact that i've cycled predominantly this bike for 15 years however, so am fairly confident that a new workhorse will become equally comfortable! the last workhorse i had that did the same job was an ancient Dawes men's frame, i have no idea what model it was, and that did me for the 15 years before the Trusty Stead.
+
+
+
+
+A - Reach : 530
+B - Saddle height : 770
+C - Handlebar Drop : 50
+D - Bar Type : dropbar
+E - Make : trek
+F - Model : lexa
+G - Size : dont know but ref is wtu142g5459g
+comments : my road bike. i've done many miles on it but after about 70km i tend to get a sore neck and shoulders. it does the job but i can't say i've ever been hugely enamoured with it. i find riding the drops really tough on the neck, which is maybe why i don't like it so much as i don't have brakes on the top bar like i do on the tricross so i have to go into drops to brake. It's fine though, does the job. crank is 172.5 (specialised tricross crank, i forgot to write, is 175)
+
+
+
+A - Reach : 535
+B - Saddle height : 735
+C - Handlebar Drop : 1
+D - Bar Type : flatbar
+E - Make : specialised
+F - Model : hardrock
+G - Size : not sure but ref is wub 092173881F
+comments : my mountain bike. I don't do much mountain biking, but every time i go out on it i love it and have fun. The saddle is intentionally a little lower and it often goes up and down depending on my terrain - the last time i rode it was off road so it's currently sitting lower than i would like it for any length of road cycling. Comfy, does the job, but i miss the versatility of the handlebar positions on the Tricross.  Crank dimensions not on it but it looks like 175 i think.
+Sorry i've just realised that i gave all my C measurements with one digit too many - this C measurement is +1cm, the tricross is 5, the road bike 5 as well. let me know if you need me to resubmit with the correct units!
